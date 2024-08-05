@@ -37,11 +37,11 @@ function buscacliente($email) {
     return $dados;
 }
 
-function cadastraCliente($nome, $email, $senha, $endereco, $numero, $bairro, $cidade, $telefone, $status, $perfil, $data) {
+function cadastraCliente($nome, $email, $senha, $cep, $logradouro,  $bairro, $cidade, $estado, $telefone, $status, $perfil, $data) {
     $conexao = conecta_bd();
-    $query = "INSERT INTO cliente (nome, email, senha, endereco, numero, bairro, cidade, telefone, status, perfil, data) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO cliente (nome, email, senha, cep, logradouro,  bairro, cidade, estado, telefone, status, perfil, data) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conexao->prepare($query);
-    $stmt->bind_param("sssssssssss", $nome, $email, $senha, $endereco, $numero, $bairro, $cidade, $telefone, $status, $perfil, $data);
+    $stmt->bind_param("ssssssssssss", $nome, $email, $senha, $cep, $logradouro, $bairro, $cidade, $estado, $telefone, $status, $perfil, $data);
     $stmt->execute();
     $dados = $stmt->affected_rows;
     $stmt->close();

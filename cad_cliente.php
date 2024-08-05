@@ -78,27 +78,31 @@ require_once('sidebar.php');
 
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
-                            <label> Endereço </label>
-                            <input type="text" class="form-control form-control-user"
-                            id="endereco" name="endereco" value="<?php if (!empty($_SESSION['endereco'])) { echo $_SESSION['endereco'];} ?>" required>
-                        </div>
-                        <div class="col-sm-6">
-                            <label> Número </label>
-                            <input type="number" class="form-control form-control-user"
-                            id="numero" name="numero" value="<?php if (!empty($_SESSION['numero'])) { echo $_SESSION['numero'];} ?>" required>
+                            <label for="cep">CEP</label>
+                            <input type="text" class="form-control form-control-user" id="cep" name="cep" placeholder="Digite o CEP" required>
+                            <button type="button" class="btn btn-primary mt-2" onclick="buscarCep()">Buscar CEP</button>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
-                            <label> Bairro </label>
-                            <input type="text" class="form-control form-control-user"
-                            id="bairro" name="bairro" value="<?php if (!empty($_SESSION['bairro'])) { echo $_SESSION['bairro'];} ?>" required>
+                            <label for="logradouro">Logradouro</label>
+                            <input type="text" class="form-control form-control-user" id="logradouro" name="logradouro" required>
                         </div>
                         <div class="col-sm-6">
-                            <label> Cidade </label>
-                            <input type="text" class="form-control form-control-user"
-                            id="cidade" name="cidade" value="<?php if (!empty($_SESSION['cidade'])) { echo $_SESSION['cidade'];} ?>" required>
+                            <label for="bairro">Bairro</label>
+                            <input type="text" class="form-control form-control-user" id="bairro" name="bairro" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" class="form-control form-control-user" id="cidade" name="cidade" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="estado">Estado</label>
+                            <input type="text" class="form-control form-control-user" id="estado" name="estado" required>
                         </div>
                     </div>
 
@@ -136,5 +140,28 @@ require_once('sidebar.php');
 <?php
 require_once('footer.php');
 ?>
+<script>
+    function buscarCep() {
+        var cep = document.getElementById('cep').value;
+        var url = 'https://viacep.com.br/ws/' + cep + '/json/';
+        
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (data.erro) {
+                    alert("CEP não encontrado!");
+                    return;
+                }
 
+                document.getElementById('logradouro').value = data.logradouro;
+                document.getElementById('bairro').value = data.bairro;
+                document.getElementById('cidade').value = data.localidade;
+                document.getElementById('estado').value = data.uf;
+            })
+            .catch(error => {
+                alert("Não foi possível acessar a API do ViaCEP.");
+                console.error("Erro:", error);
+            });
+    }
+</script>
 

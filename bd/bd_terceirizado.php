@@ -37,11 +37,11 @@ function buscaTerceirizado($email) {
     return $dados;
 }
 
-function cadastraTerceirizado($nome, $email, $telefone, $senha, $status, $perfil, $data) {
+function cadastraTerceirizado($nome, $email, $telefone,  $cep, $logradouro,  $bairro, $cidade, $estado, $senha, $status, $perfil, $data) {
     $conexao = conecta_bd();
-    $query = "INSERT INTO terceirizado (nome, email, telefone, senha, status, perfil, data) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO terceirizado (nome, email, telefone,  cep, logradouro,  bairro, cidade, estado, senha, status, perfil, data) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conexao->prepare($query);
-    $stmt->bind_param("sssssss", $nome, $email, $telefone, $senha, $status, $perfil, $data);
+    $stmt->bind_param("ssssssssssss", $nome, $email, $telefone,  $cep, $logradouro,  $bairro, $cidade, $estado,  $senha, $status, $perfil, $data);
     $stmt->execute();
     $dados = $stmt->affected_rows;
     $stmt->close();

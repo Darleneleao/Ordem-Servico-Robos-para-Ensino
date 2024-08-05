@@ -6,6 +6,13 @@ unset ($_SESSION['nome']);
 unset ($_SESSION['email']);
 unset ($_SESSION['senha']);
 unset ($_SESSION['telefone']);
+unset($_SESSION['cep']);
+unset($_SESSION['logradouro']);
+unset($_SESSION['bairro']);
+unset($_SESSION['cidade']);
+unset($_SESSION['estado']);
+
+
 ?>
 
 <!-- Main Content -->

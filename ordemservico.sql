@@ -32,10 +32,11 @@ CREATE TABLE `cliente` (
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(100) NOT NULL,
-  `endereco` varchar(100) NOT NULL,
-  `numero` varchar(11) NOT NULL,
+  `cep` varchar(9) NOT NULL,
+  `logradouro` varchar(100) NOT NULL,
   `bairro` varchar(100) NOT NULL,
   `cidade` varchar(100) NOT NULL,
+  `estado` varchar(2) NOT NULL,
   `telefone` varchar(100) NOT NULL,
   `status` int(11) NOT NULL,
   `perfil` int(11) NOT NULL,
@@ -46,7 +47,7 @@ CREATE TABLE `cliente` (
 -- Extraindo dados da tabela `cliente`
 --
 
-INSERT INTO `cliente` (`cod`, `nome`, `email`, `senha`, `endereco`, `numero`, `bairro`, `cidade`, `telefone`, `status`, `perfil`, `data`) VALUES
+INSERT INTO `cliente` (`cod`, `nome`, `email`, `senha`, `cep`, `logradouro`, `bairro`, `cidade`, `estado`, `telefone`, `status`, `perfil`, `data`) VALUES
 (4, 'Danilo Alves Alvarenga', 'danilo@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Avenida Dolores Silva', '335', 'Centro', 'Aguanil', '(35) 99984-9594', 1, 2, 22),
 (5, 'Mariany Alves', 'mary@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Avenida Dolores Silva', '335', 'Centro', 'Aguanil', '(35) 99984-9594', 1, 2, 22);
 
@@ -108,6 +109,11 @@ CREATE TABLE `terceirizado` (
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `telefone` varchar(100) NOT NULL,
+  `cep` varchar(9) NOT NULL,
+  `logradouro` varchar(100) NOT NULL,
+  `bairro` varchar(100) NOT NULL,
+  `cidade` varchar(100) NOT NULL,
+  `estado` varchar(2) NOT NULL,
   `senha` varchar(100) NOT NULL,
   `status` int(11) NOT NULL,
   `perfil` int(11) NOT NULL,
@@ -118,7 +124,7 @@ CREATE TABLE `terceirizado` (
 -- Extraindo dados da tabela `terceirizado`
 --
 
-INSERT INTO `terceirizado` (`cod`, `nome`, `email`, `telefone`, `senha`, `status`, `perfil`, `data`) VALUES
+INSERT INTO `terceirizado` (`cod`, `nome`, `email`, `telefone`,  `cep`, `logradouro`, `bairro`, `cidade`, `estado`, `senha`,  `status`, `perfil`, `data`) VALUES
 (7, 'Dalyla Alvarenga ', 'dalylalvarenga@gmail.com', '(35) 99984-9594', 'e10adc3949ba59abbe56e057f20f883e', 1, 3, '2022-07-15'),
 (8, 'Maria Aparecida', 'maria@gmail.com', '(35) 99984-9594', 'e10adc3949ba59abbe56e057f20f883e', 1, 3, '2022-07-14');
 
@@ -133,16 +139,22 @@ CREATE TABLE `usuario` (
   `nome` varchar(100) NOT NULL,
   `senha` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `cep` varchar(9) NOT NULL,
+  `logradouro` varchar(100) NOT NULL,
+  `bairro` varchar(100) NOT NULL,
+  `cidade` varchar(100) NOT NULL,
+  `estado` varchar(2) NOT NULL,
   `perfil` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `data` date NOT NULL
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`cod`, `nome`, `senha`, `email`, `perfil`, `status`, `data`) VALUES
+INSERT INTO `usuario` (`cod`, `nome`, `senha`, `email`, `cep`, `logradouro`, `bairro`, `cidade`, `estado`,`perfil`, `status`, `data`) VALUES
 (25, 'Fábio Junior Alves', 'e10adc3949ba59abbe56e057f20f883e', 'faguanil@gmail.com', 1, 1, '2022-07-15');
 
 --
