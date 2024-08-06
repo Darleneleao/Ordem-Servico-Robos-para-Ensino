@@ -25,7 +25,7 @@ function listaClientes() {
     return $clientes;
 }
 
-function buscacliente($email) {
+function buscaCliente($email) {
     $conexao = conecta_bd();
     $query = "SELECT * FROM cliente WHERE email = ?";
     $stmt = $conexao->prepare($query);

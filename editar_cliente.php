@@ -9,8 +9,8 @@ $codigo = $_GET['cod'];
 $dados = buscaClienteeditar($codigo);
 $nome = $dados["nome"];
 $email = $dados["email"];
-$endereco = $dados["endereco"];
-$numero = $dados["numero"];
+// $endereco = $dados["endereco"];
+// $numero = $dados["numero"];
 $bairro = $dados["bairro"];
 $cidade = $dados["cidade"];
 $telefone = $dados["telefone"];
@@ -47,7 +47,7 @@ $status = $dados["status"];
                         </div>
                     </div>
 
-                     <div class="form-group row">
+                     <!-- <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <label> Endereço </label>
                             <input type="text" class="form-control form-control-user" id="endereco" name="endereco" value="<?= $endereco ?>" readonly>
@@ -56,7 +56,7 @@ $status = $dados["status"];
                             <label> Número </label>
                             <input type="text" class="form-control form-control-user" id="numero" name="numero" value="<?= $numero ?>" readonly>
                         </div>
-                    </div>
+                    </div> -->
 
                      <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">

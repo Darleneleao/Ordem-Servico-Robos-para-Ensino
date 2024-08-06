@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('header.php'); 
+require_once('header.php');
 ?>
 
 <body class="bg-gradient-primary">
@@ -19,48 +19,75 @@ require_once('header.php');
                             </div>
 
                             <?php
-                                if (isset($_SESSION['texto_erro_register'])):
-                                ?>
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;<?= $_SESSION['texto_erro_register'] ?></strong> 
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                               <?php
-								unset($_SESSION['texto_erro_register']);
-                                endif;
-                               ?>
+                            if (isset($_SESSION['texto_erro_register'])) :
+                            ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;<?= $_SESSION['texto_erro_register'] ?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php
+                                unset($_SESSION['texto_erro_register']);
+                            endif;
+                            ?>
 
                             <form class="user" action="register_envia.php" method="post">
                                 <div class="form-group">
                                     <label> Nome Completo </label>
-                                    <input type="text" class="form-control form-control-user" id="nome" name="nome" value="<?php if (!empty($_SESSION['nome'])) { echo $_SESSION['nome'];} ?>"  
-                                        placeholder="Nome Completo" required>
+                                    <input type="text" class="form-control form-control-user" id="nome" name="nome" value="<?php if (!empty($_SESSION['nome'])) {
+                                                                                                                                echo $_SESSION['nome'];
+                                                                                                                            } ?>" placeholder="Nome Completo" required>
                                 </div>
                                 <div class="form-group">
                                     <label> Email </label>
-                                    <input type="email" class="form-control form-control-user" id="email" name="email" 
-                                        placeholder="Endereço de Email" required>
+                                    <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Endereço de Email" required>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <label> Senha </label>
-                                        <input type="password" class="form-control form-control-user"
-                                            id="senha" name="senha" placeholder="Senha" required>
+                                        <input type="password" class="form-control form-control-user" id="senha" name="senha" placeholder="Senha" required>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 mb-3">
                                         <label> Confirmar Senha </label>
-                                        <input type="password" class="form-control form-control-user"
-                                            id="confirma_senha" name="confirma_senha" placeholder="Confirmar Senha"  oninput="validatepassword(this)" required>
+                                        <input type="password" class="form-control form-control-user" id="confirma_senha" name="confirma_senha" placeholder="Confirmar Senha" oninput="validatepassword(this)" required>
                                     </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 mb-3">
+                                            <label>CEP</label>
+                                            <input type="text" class="form-control form-control-user" id="cep" name="cep" placeholder="CEP" required>
+                                        </div>
+                                        <div class="form-group col-md-4 mb-3">
+                                            <label>Logradouro</label>
+                                            <input type="text" class="form-control form-control-user" id="logradouro" name="logradouro" placeholder="Logradouro" required>
+                                        </div>
+                                        <div class="form-group col-md-4 mb-3">
+                                            <label>Bairro</label>
+                                            <input type="text" class="form-control form-control-user" id="bairro" name="bairro" placeholder="Bairro" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label>Cidade</label>
+                                            <input type="text" class="form-control form-control-user" id="cidade" name="cidade" placeholder="Cidade" required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>Estado</label>
+                                            <input type="text" class="form-control form-control-user" id="estado" name="estado" placeholder="Estado" required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>Telefone</label>
+                                            <input type="text" class="form-control form-control-user" id="telefone" name="telefone" placeholder="Telefone" required>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Criar Conta
-                                </button>                               
+                                </button>
                             </form>
                             <hr>
-                            
+
                             <div class="text-center">
                                 <a class="small" href="index.php">Possui uma conta? Conecte-se!</a>
                             </div>
@@ -72,6 +99,17 @@ require_once('header.php');
 
     </div>
 
-<?php
-require_once('footer.php');
-?>
+    <?php
+    // require_once('footer.php');
+    ?>
+
+    <!-- Scripts -->
+    <script>
+        function validatepassword(input) {
+            if (input.value != document.getElementById('senha').value) {
+                input.setCustomValidity('As senhas não correspondem.');
+            } else {
+                input.setCustomValidity('');
+            }
+        }
+    </script>

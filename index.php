@@ -65,6 +65,9 @@ require_once('header.php');
                                     <div class="text-center">
                                     <a class="small" href="esqueci_senha.php">Esqueci Senha</a> <!-- Adicionando o link para recuperação de senha -->
                                     </div>
+                                    <div class="text-center mt-3">
+                                        <a class="btn btn-primary btn-user btn-block" href="register.php">Cadastrar Cliente</a> <!-- Transformando o link em botão -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
