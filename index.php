@@ -59,11 +59,11 @@ require_once('header.php');
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Acessar
-                                        </button>                                        
+                                        </button>   
                                     </form>
                                     
                                     <div class="text-center">
-                                        
+                                    <a class="small" href="esqueci_senha.php">Esqueci Senha</a> <!-- Adicionando o link para recuperação de senha -->
                                     </div>
                                 </div>
                             </div>
