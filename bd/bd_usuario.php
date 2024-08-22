@@ -12,6 +12,13 @@ function checaUsuario($email, $senha) {
     $resultado = mysqli_query($conexao, $query);
     $dados = mysqli_fetch_array($resultado);
 
+    // Se o usuário foi encontrado, armazenar os dados na sessão
+    if ($dados) {
+        session_start();
+        $_SESSION['nome_usuario'] = $dados['nome'];
+        $_SESSION['email_usuario'] = $dados['email'];
+    }
+
     return $dados;
 }
 
