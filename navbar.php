@@ -2,10 +2,6 @@
 
     if ($_SESSION['perfil']==1) {
         $texto = "PAINEL ADMINISTRATIVO DO USUÁRIO";
-    }elseif($_SESSION['perfil']==2){
-        $texto = "PAINEL ADMINISTRATIVO DO CLIENTE";
-    }else{
-        $texto = "PAINEL ADMINISTRATIVO DO TERCEIRIZADO";
     }
 
 ?>
@@ -40,26 +36,7 @@
         <?php
             }
         ?>
-
-        <?php
-            if($_SESSION['perfil']== 2){
-        ?>           
-            <a class="dropdown-item" href="editar_perfil_cliente.php">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-900"></i>
-            Perfil do Cliente
-        <?php
-            }
-        ?>
-        <?php
-            if($_SESSION['perfil']== 3){
-        ?>           
-            <a class="dropdown-item" href="editar_perfil_terceirizado.php">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-900"></i>
-            Perfil do Terceirizado
-        <?php
-            }
-        ?>
-            
+              
         </a>
         <a class="dropdown-item" href="editar_senha.php">
             <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-900"></i>

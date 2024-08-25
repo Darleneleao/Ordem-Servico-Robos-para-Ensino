@@ -7,12 +7,6 @@ $senha = md5($_POST["senha"]);
 if ($_SESSION['perfil'] == 1) {
 	require_once ("bd/bd_usuario.php");
 	$dados = editarSenhaUsuario($codigo,$senha);
-}elseif($_SESSION['perfil'] == 2){
-	require_once ("bd/bd_cliente.php");
-	$dados = editarSenhaCliente($codigo,$senha);
-}else{
-	require_once ("bd/bd_terceirizado.php");
-	$dados = editarSenhaTerceirizado($codigo,$senha);
 }
 
 if ($dados == 1){

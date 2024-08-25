@@ -13,12 +13,6 @@ else{
 	if ($perfil == 1) {
 		require_once ("bd/bd_usuario.php");
 		$dados = checaUsuario($email,$senha);
-	}elseif($perfil == 2){
-		require_once ("bd/bd_cliente.php");
-		$dados = checaCliente($email,$senha);
-	}else{
-		require_once ("bd/bd_terceirizado.php");
-		$dados = checaTerceirizado($email,$senha);
 	}
 
 	if($dados == "") {

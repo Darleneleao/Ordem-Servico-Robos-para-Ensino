@@ -24,113 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cliente`
---
-
-CREATE TABLE `cliente` (
-  `cod` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `senha` varchar(100) NOT NULL,
-  `cep` varchar(9) NOT NULL,
-  `logradouro` varchar(100) NOT NULL,
-  `bairro` varchar(100) NOT NULL,
-  `cidade` varchar(100) NOT NULL,
-  `estado` varchar(2) NOT NULL,
-  `telefone` varchar(100) NOT NULL,
-  `status` int(11) NOT NULL,
-  `perfil` int(11) NOT NULL,
-  `data` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `cliente`
---
-
-INSERT INTO `cliente` (`cod`, `nome`, `email`, `senha`, `cep`, `logradouro`, `bairro`, `cidade`, `estado`, `telefone`, `status`, `perfil`, `data`) VALUES
-(4, 'Danilo Alves Alvarenga', 'danilo@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Avenida Dolores Silva', '335', 'Centro', 'Aguanil', '(35) 99984-9594', 1, 2, 22),
-(5, 'Mariany Alves', 'mary@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Avenida Dolores Silva', '335', 'Centro', 'Aguanil', '(35) 99984-9594', 1, 2, 22);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `ordem`
---
-
-CREATE TABLE `ordem` (
-  `cod` int(11) NOT NULL,
-  `cod_cliente` int(11) NOT NULL,
-  `cod_terceirizado` int(11) NOT NULL,
-  `cod_servico` int(11) NOT NULL,
-  `data_servico` date NOT NULL,
-  `status` int(11) NOT NULL,
-  `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `ordem`
---
-
-INSERT INTO `ordem` (`cod`, `cod_cliente`, `cod_terceirizado`, `cod_servico`, `data_servico`, `status`, `data`) VALUES
-(10, 5, 8, 5, '2022-07-16', 2, '2022-07-15'),
-(11, 4, 7, 4, '2022-07-17', 1, '2022-07-14'),
-(12, 5, 8, 5, '2022-07-21', 3, '2022-07-15'),
-(13, 4, 7, 4, '2022-07-19', 1, '2022-07-15');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `servico`
---
-
-CREATE TABLE `servico` (
-  `cod` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL,
-  `valor` decimal(10,0) NOT NULL,
-  `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `servico`
---
-
-INSERT INTO `servico` (`cod`, `nome`, `valor`, `data`) VALUES
-(4, 'Lavar Carro', '50', '2022-07-14'),
-(5, 'Limpar Piscina', '70', '2022-07-14');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `terceirizado`
---
-
-CREATE TABLE `terceirizado` (
-  `cod` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `telefone` varchar(100) NOT NULL,
-  `cep` varchar(9) NOT NULL,
-  `logradouro` varchar(100) NOT NULL,
-  `bairro` varchar(100) NOT NULL,
-  `cidade` varchar(100) NOT NULL,
-  `estado` varchar(2) NOT NULL,
-  `senha` varchar(100) NOT NULL,
-  `status` int(11) NOT NULL,
-  `perfil` int(11) NOT NULL,
-  `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `terceirizado`
---
-
-INSERT INTO `terceirizado` (`cod`, `nome`, `email`, `telefone`,  `cep`, `logradouro`, `bairro`, `cidade`, `estado`, `senha`,  `status`, `perfil`, `data`) VALUES
-(7, 'Dalyla Alvarenga ', 'dalylalvarenga@gmail.com', '(35) 99984-9594', 'e10adc3949ba59abbe56e057f20f883e', 1, 3, '2022-07-15'),
-(8, 'Maria Aparecida', 'maria@gmail.com', '(35) 99984-9594', 'e10adc3949ba59abbe56e057f20f883e', 1, 3, '2022-07-14');
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `usuario`
 --
 
@@ -157,36 +50,34 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`cod`, `nome`, `senha`, `email`, `cep`, `logradouro`, `bairro`, `cidade`, `estado`,`perfil`, `status`, `data`) VALUES
 (25, 'Fábio Junior Alves', 'e10adc3949ba59abbe56e057f20f883e', 'faguanil@gmail.com', 1, 1, '2022-07-15');
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da nova tabela `acoes_projeto`
+--
+
+CREATE TABLE `acoes_projeto` (
+  `cod` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(100) NOT NULL,
+  `descricao` text NOT NULL,
+  `data` date NOT NULL,
+  `imagem` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`cod`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `acoes_projeto`
+--
+
+INSERT INTO `acoes_projeto` (`cod`, `titulo`, `descricao`, `data`, `imagem`) VALUES
+(1, 'Ação de Reflorestamento', 'Plantio de mudas nativas na região', '2024-08-24', 'reflorestamento.jpg'),
+(2, 'Limpeza de Rio', 'Coleta de lixo e resíduos ao longo do rio', '2024-08-23', 'limpeza_rio.jpg');
+
+-- --------------------------------------------------------
+
 --
 -- Índices para tabelas despejadas
 --
-
---
--- Índices para tabela `cliente`
---
-ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`cod`);
-
---
--- Índices para tabela `ordem`
---
-ALTER TABLE `ordem`
-  ADD PRIMARY KEY (`cod`),
-  ADD KEY `foreign_key_cod_cliente` (`cod_cliente`),
-  ADD KEY `foreign_key_cod_servico` (`cod_servico`),
-  ADD KEY `foreign_key_cod_terceirizado` (`cod_terceirizado`);
-
---
--- Índices para tabela `servico`
---
-ALTER TABLE `servico`
-  ADD PRIMARY KEY (`cod`);
-
---
--- Índices para tabela `terceirizado`
---
-ALTER TABLE `terceirizado`
-  ADD PRIMARY KEY (`cod`);
 
 --
 -- Índices para tabela `usuario`
@@ -199,46 +90,17 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT de tabela `cliente`
---
-ALTER TABLE `cliente`
-  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de tabela `ordem`
---
-ALTER TABLE `ordem`
-  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT de tabela `servico`
---
-ALTER TABLE `servico`
-  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de tabela `terceirizado`
---
-ALTER TABLE `terceirizado`
-  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- Restrições para despejos de tabelas
+-- AUTO_INCREMENT de tabela `acoes_projeto`
 --
+ALTER TABLE `acoes_projeto`
+  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
---
--- Limitadores para a tabela `ordem`
---
-ALTER TABLE `ordem`
-  ADD CONSTRAINT `foreign_key_cod_cliente` FOREIGN KEY (`cod_cliente`) REFERENCES `cliente` (`cod`),
-  ADD CONSTRAINT `foreign_key_cod_servico` FOREIGN KEY (`cod_servico`) REFERENCES `servico` (`cod`),
-  ADD CONSTRAINT `foreign_key_cod_terceirizado` FOREIGN KEY (`cod_terceirizado`) REFERENCES `terceirizado` (`cod`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

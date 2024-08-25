@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('header.php'); 
+require_once('header.php');
 ?>
 
 <body class="bg-gradient-primary">
@@ -16,26 +16,28 @@ require_once('header.php');
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6 text-center">
+                                <img src="img/logo_libertaMinas.png" alt="Imagem de Login" class="img-fluid">
+                            </div>
                             <div class="col-lg-6">
                                 <div class="p-4">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">GERENCIADOR DE ORDEM DE SERVIÇO</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">GERENCIADOR DAS AÇÕES DO PROJETOS</h1>
                                     </div>
-                                   <?php
+                                    <?php
                                     if (isset($_SESSION['texto_erro_login'])):
                                     ?>
                                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;<?= $_SESSION['texto_erro_login'] ?></strong> 
+                                            <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;<?= $_SESSION['texto_erro_login'] ?></strong>
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                   <?php
-									unset($_SESSION['texto_erro_login']);
+                                    <?php
+                                        unset($_SESSION['texto_erro_login']);
                                     endif;
-                                   ?>
-                                   
+                                    ?>
+
                                     <form class="user" action="valida_login.php" method="post">
                                         <div class="form-group">
                                             <label> Email </label>
@@ -51,23 +53,14 @@ require_once('header.php');
                                         <div class="form-group">
                                             <label> Perfil </label>
                                             <select class="form-control" id="perfil" name="perfil" required>
-                                                <option value=""> </option>
                                                 <option value="1">Administrador</option>
-                                                <option value="2">Cliente</option>
-                                                <option value="3">Terceirizado</option>
                                             </select>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Acessar
-                                        </button>   
+                                        </button>
                                     </form>
-                                    
-                                    <div class="text-center">
-                                    <a class="small" href="esqueci_senha.php">Esqueci Senha</a> <!-- Adicionando o link para recuperação de senha -->
-                                    </div>
-                                    <div class="text-center mt-3">
-                                        <a class="btn btn-primary btn-user btn-block" href="register.php">Cadastrar Cliente</a> <!-- Transformando o link em botão -->
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -79,7 +72,7 @@ require_once('header.php');
         </div>
 
     </div>
-<!-- Bootstrap core JavaScript-->
+    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -90,5 +83,3 @@ require_once('header.php');
     <script src="js/sb-admin-2.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/validate.js"></script>
-
-
