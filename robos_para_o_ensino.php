@@ -121,7 +121,7 @@ $acoes = listaAcoes();
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Seção Ações do Projeto -->
-    <div class="container mt-5">
+    <div id="acoes" class="container mt-5">
         <h1 class="mb-4">Ações do Projeto</h1>
         <div class="row">
             <?php if (empty($acoes)): ?>
@@ -150,7 +150,7 @@ $acoes = listaAcoes();
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h5>Siga-nos no Instagram</h5>
+                <h5>autobotsifmachado</h5>
                 <div class="social mt-2">
                     <a href="https://www.instagram.com/autobotsifmachado/" target="_blank" class="text-white me-3">
                         <i class="fab fa-instagram fa-lg"></i>
