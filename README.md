@@ -8,13 +8,13 @@ Este projeto é um sistema web desenvolvido para gerenciar ordens de serviço re
 - **Gerenciamento de ações:** Possibilita o cadastro, edição e exclusão de ações relacionadas às ordens de serviço.
 - **Envio de e-mails:** Utiliza o PHPMailer para envio de notificações por e-mail.
 - **Interface amigável:** Desenvolvida com HTML, CSS e SCSS para uma melhor experiência do usuário.
-- **Banco de dados:** Estruturação e manipulação de dados utilizando MySQL.
+- **Banco de dados:** Estruturação e manipulação de dados utilizando phpMyAdmin.
 
 ## 🛠️ Tecnologias Utilizadas
 
 - **Frontend:** HTML, CSS, SCSS, JavaScript
 - **Backend:** PHP
-- **Banco de Dados:** MySQL
+- **Banco de Dados:** phpMyAdmin
 - **Bibliotecas:** PHPMailer
 
 
