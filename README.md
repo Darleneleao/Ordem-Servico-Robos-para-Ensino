@@ -18,11 +18,24 @@ Este projeto é um sistema web desenvolvido para gerenciar ordens de serviço re
 - **Bibliotecas:** PHPMailer
 
 
-## 🚀 Como Executar o Projeto
+## ⚙️ Configure o Ambiente
 
-1. **Clone o repositório:**
-   ```bash
-   git clone https://github.com/Darleneleao/Ordem-Servico-Robos-para-Ensino.git
+1. **Instale um servidor local:**
+   - Recomendados: [XAMPP](https://www.apachefriends.org/), [WAMP](https://www.wampserver.com/) ou [Laragon](https://laragon.org/).
+
+2. **Importe o banco de dados:**
+   - Acesse o **phpMyAdmin** (geralmente disponível em `http://localhost/phpmyadmin`).
+   - Crie um novo banco de dados com o nome que preferir.
+   - Importe o arquivo `ordemservico.sql` que está no repositório.
+
+3. **Coloque o projeto no diretório do servidor:**
+   - Copie todos os arquivos do repositório para a pasta `htdocs` (XAMPP) ou `www` (WAMP).
+
+4. **Acesse o sistema no navegador:**
+   - Vá para:
+     ```
+     http://localhost/Ordem-Servico-Robos-para-Ensino
+     ```
 
 ## 📷 Capturas de Tela
 
